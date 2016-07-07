@@ -58,6 +58,5 @@ class Importer
   def team_creation(name, image)
     puts "Importing " + name + " players"
     team = Team.create(name: name, image: image)
-    #team.save
   end
 end
