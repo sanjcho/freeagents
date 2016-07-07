@@ -23,11 +23,29 @@ class Importer
   def parse_players(src)
     page = Nokogiri::HTML(open(src))
     #puts page.css("a.active")[0].text #player names
-    page.css('tr').drop(3).each do |player|
+    page.css('tr'). each do |player|
       caphit = player.css('td.caphit')[0].text if player.css('td.caphit')[0]
       #puts caphit
-      puts player.css("a.active")[0].text if caphit.to_i >= 1 && player.css("a.active")[0]
+
+      if caphit.to_i >= 1 && player.css("a.active")[0]
+        puts get_role(player.css('a')[0].to_s) if is_UFA?(player)
+      end
     end
   end
 
+  def is_UFA?(player)
+    player.css('td')[5, 3].each do |maybeUFA|
+      if maybeUFA && maybeUFA.text.strip =="UFA"
+        return true
+      end
+    end
+    return false
+  end
+
+  def get_role(player_about)
+    if /Defence/.match(player_about) then 'Defencemen'
+    elsif /Center|Right|Left/.match(player_about) then 'Forward'
+    elsif /Goaltender/.match(player_about) then 'Goaltender'
+    end
+  end
 end
