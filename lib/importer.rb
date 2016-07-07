@@ -1,7 +1,6 @@
 require "nokogiri"
 require "open-uri"
 require "uri/http"
-require "thread/pool"
 
 class Importer  
 
@@ -15,9 +14,12 @@ class Importer
   def parse_teams
     page = Nokogiri::HTML(open("http://nhlnumbers.com/"))
     page.css("a.team").each do |team_parsed|
-      team = team_creation(team_parsed.css('img').first['alt'], team_parsed.css('img').first['src'])
-      parse_players(team_parsed['href'], team)
+      fork do
+        team = team_creation(team_parsed.css('img').first['alt'], team_parsed.css('img').first['src'])
+        parse_players(team_parsed['href'], team)
+      end
     end
+    Process.waitall
   end
 
   def parse_players(src, team)
@@ -29,7 +31,7 @@ class Importer
         player.name = player_page.css("a.active")[0].text
         player.role = get_role(player_page.css('a')[0].to_s)
         player.caphit = caphit.to_f
-        puts player.season = season
+        player.season = season
         player.save
       end
     end
