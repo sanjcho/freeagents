@@ -1,16 +1,18 @@
 require "nokogiri"
 require "open-uri"
 require "uri/http"
+require "thread/pool"
 
 class Importer  
 
-  def make_parse
-    
+  def self.call
+    Team.destroy_all
+    new.parse_teams
   end
 
-  def parse_teams
-    Team.destroy_all
 
+
+  def parse_teams
     page = Nokogiri::HTML(open("http://nhlnumbers.com/"))
     page.css("a.team").each do |team_parsed|
       team = Team.new
