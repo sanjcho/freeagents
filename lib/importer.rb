@@ -10,6 +10,7 @@ class Importer
 
   def parse_teams
     Team.delete_all
+    Player.delete_all
     page = Nokogiri::HTML(open("http://nhlnumbers.com/"))
     page.css("a.team").each do |team_parsed|
       team = Team.new
