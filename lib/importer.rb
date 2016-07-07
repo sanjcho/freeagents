@@ -26,11 +26,11 @@ class Importer
     #puts page.css("a.active")[0].text #player names
     page.css('tr'). each do |player_page|
       caphit = player_page.css('td.caphit')[0].text if player_page.css('td.caphit')[0]
-      if caphit.to_i >= 1 && player_page.css("a.active")[0] && is_UFA?(player_page)
+      if caphit.to_f >= 1 && player_page.css("a.active")[0] && is_UFA?(player_page)
         player = team.players.new
         puts player.name = player_page.css("a.active")[0].text
         player.role = get_role(player_page.css('a')[0].to_s)
-        player.caphit = caphit.to_i
+        player.caphit = caphit.to_f
         player.save
       end
     end
