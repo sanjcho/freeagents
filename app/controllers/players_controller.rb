@@ -4,14 +4,26 @@ class PlayersController < ApplicationController
   end
 
   def season1718
-    @players = Player.season1718.order(caphit: :desc)
+    @forwards = Player.season1718.forward.order(caphit: :desc).page(params[:forward_page])
+    @defencemans = Player.season1718.defenceman.order(caphit: :desc).page(params[:defenceman_page])
+    @goalkeepers = Player.season1718.goalkeeper.order(caphit: :desc).page(params[:goalkeeper_page])
+    @header = "Season 2017 - 2018"
+    render "season1718"
   end
 
   def season1819
-    @players = Player.season1819.order(caphit: :desc)
+    @forwards = Player.season1819.forward.order(caphit: :desc).page(params[:forward_page])
+    @defencemans = Player.season1819.defenceman.order(caphit: :desc).page(params[:defenceman_page])
+    @goalkeepers = Player.season1819.goalkeeper.order(caphit: :desc).page(params[:goalkeeper_page])
+    @header = "Season 2018 - 2019"
+    render "season1718"
   end
 
   def season1920
-    @players = Player.season1920.order(caphit: :desc)
+    @forwards = Player.season1920.forward.order(caphit: :desc).page(params[:forward_page])
+    @defencemans = Player.season1920.defenceman.order(caphit: :desc).page(params[:defenceman_page])
+    @goalkeepers = Player.season1920.goalkeeper.order(caphit: :desc).page(params[:goalkeeper_page])
+    @header = "Season 2019 - 2020"
+    render "season1718"
   end
 end

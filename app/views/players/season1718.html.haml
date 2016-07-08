@@ -1,2 +1,7 @@
-%h4 Season 2017 - 2018
-= render partial: 'seasonall'
+%h4= @header
+= render partial: 'seasonall', locals: {players: @forwards}
+= paginate @forwards, theme: 'twitter-bootstrap-3', param_name: "forward_page"
+= render partial: 'seasonall', locals: {players: @defencemans}
+= paginate @defencemans, theme: 'twitter-bootstrap-3', param_name: "defenceman_page"
+= render partial: 'seasonall', locals: {players: @goalkeepers}
+= paginate @goalkeepers, theme: 'twitter-bootstrap-3', param_name: "goalkeeper_page"

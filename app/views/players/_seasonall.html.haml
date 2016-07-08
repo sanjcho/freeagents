@@ -1,33 +1,15 @@
 %table.table.table-hover
   %thead
+    %tr.danger
+      %th= players.first.role.pluralize
     %tr
       %th Name
       %th Team
       %th Logo
       %th Cap Hit
   %tbody
-    %tr.danger
-      %th Forwards:
-    - @players.forward.each do |player|
-      %tr.warning
-        %th= player.name
-        %th= player.team.name
-        %th 
-          %img{src: player.team.image}
-        %th= player.caphit
-    %tr.danger
-      %th Defencemans:
-    - @players.defenceman.each do |player|
-      %tr.success
-        %th= player.name
-        %th= player.team.name
-        %th 
-          %img{src: player.team.image}
-        %th= player.caphit
-    %tr.danger 
-      %th Goalkeepers:
-    - @players.goalkeeper.each do |player|
-      %tr.info
+    - players.each do |player|
+      %tr
         %th= player.name
         %th= player.team.name
         %th 
