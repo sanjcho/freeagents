@@ -9,15 +9,15 @@
   %body
     .container
       .row
-        .col-lg-6.col-lg-offset-3.col-md-8.col-md.offset-4
+        .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-3
           %h3 Unrestricted free angents NHL 2018-2020
       .row
         .col-lg-2.col-md-3
           .btn-group-vertical
-            %button{type: 'button', class:'btn btn-default'} Home
-            %button{type: 'button', class:'btn btn-default'} UFA in 2017-2018
-            %button{type: 'button', class:'btn btn-default'} UFA in 2018-2019
-            %button{type: 'button', class:'btn btn-default'} UFA in 2019-2020
+            = link_to "Home", home_path, class:'btn btn-default'
+            = link_to "UFA in 2017-2018", season1718_path, class:'btn btn-default'
+            = link_to "UFA in 2018-2019", season1819_path, class:'btn btn-default'
+            = link_to "UFA in 2019-2020", season1920_path, class:'btn btn-default'
         .col-lg-10.col-md-9
           
 
