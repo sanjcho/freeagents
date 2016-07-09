@@ -15,7 +15,9 @@ gem 'twitter-bootstrap-rails', '~> 3.2.2'
 gem 'kaminari', '~> 0.17.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 group :development, :test do
-
+  gem 'rspec-rails', "~> 3.5.1"
+  gem "factory_girl_rails", "~> 4.7.0"
+  gem 'database_cleaner', "~> 1.5.3"
   gem 'byebug'
 end
 

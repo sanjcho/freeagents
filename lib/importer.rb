@@ -49,7 +49,7 @@ class Importer
   end
 
   def get_role(player_about)
-    if /Defence/.match(player_about) then 'Defencemen'
+    if /Defence/.match(player_about) then 'Defenceman'
     elsif /Center|Right|Left/.match(player_about) then 'Forward'
     elsif /Goaltender/.match(player_about) then 'Goaltender'
     end
