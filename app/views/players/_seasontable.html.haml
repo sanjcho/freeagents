@@ -1,0 +1,17 @@
+%h4= role.pluralize
+%table.table.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Team
+      %th Logo
+      %th Cap Hit
+  %tbody
+    - players.each do |player|
+      %tr
+        %th= player.name
+        %th= player.team_name
+        %th 
+          %img{src: player.team_logo}
+        %th= player.caphit
+

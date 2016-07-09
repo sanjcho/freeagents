@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Freeagents
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container
+      .row
+        .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-3
+          %h3 Unrestricted free angents NHL 2018-2020
+      .row
+        .col-lg-2.col-md-3
+          .btn-group-vertical
+            = link_to "Home", home_path, class:'btn btn-default'
+            = link_to "UFA in 2017-2018", season1718_path, class:'btn btn-default'
+            = link_to "UFA in 2018-2019", season1819_path, class:'btn btn-default'
+            = link_to "UFA in 2019-2020", season1920_path, class:'btn btn-default'
+        .col-lg-10.col-md-9
+          
+
+          = yield

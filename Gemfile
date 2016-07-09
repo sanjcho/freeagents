@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.0'
 gem "pg", '~> 0.18.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -10,9 +10,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'nokogiri'
-gem 'haml'
-
-
+gem 'haml', '~> 4.0.7'
+gem 'twitter-bootstrap-rails', '~> 3.2.2'
+gem 'kaminari', '~> 0.17.0'
+gem 'bootstrap-kaminari-views', '~> 0.0.5'
 group :development, :test do
 
   gem 'byebug'

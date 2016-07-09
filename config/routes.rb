@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'home', to: 'players#players_by_seasons'
+  get 'season1718', to: 'players#season1718'
+  get 'season1819', to: 'players#season1819'
+  get 'season1920', to: 'players#season1920'
+
+
+  root to: 'players#players_by_seasons'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
