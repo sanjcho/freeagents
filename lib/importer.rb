@@ -1,6 +1,5 @@
 require "nokogiri"
 require "open-uri"
-require "uri/http"
 
 class Importer  
 
@@ -8,8 +7,6 @@ class Importer
     Player.destroy_all
     new.parse_teams
   end
-
-
 
   def parse_teams
     page = Nokogiri::HTML(open("http://nhlnumbers.com/"))
@@ -28,19 +25,19 @@ class Importer
     page = Nokogiri::HTML(open(src))
     page.css('tr'). each do |player_page|
       caphit = player_page.css('td.caphit')[0].text if player_page.css('td.caphit')[0]
-      if caphit.to_f >= 1 && player_page.css("a.active")[0] && season = which_season(player_page)
-        player = Player.create(name: player_page.css("a.active")[0].text,
-                               role: get_role(player_page.css('a')[0].to_s),
-                               caphit: caphit.to_f,
-                               season: season,
-                               team_name: team_name,
-                               team_logo: team_logo
-                              )
+      if caphit.to_f >= 1 && player_page.css("a.active")[0] && season = which_season_UFA(player_page)
+        Player.create(name: player_page.css("a.active")[0].text,
+                      role: get_role(player_page.css('a')[0].to_s),
+                      caphit: caphit.to_f,
+                      season: season,
+                      team_name: team_name,
+                      team_logo: team_logo
+                      )
       end
     end
   end
 
-  def which_season(player_page)
+  def which_season_UFA(player_page)
     season = 18
     player_page.css('td')[5, 3].each do |maybeUFA|
       if maybeUFA && maybeUFA.text.strip =="UFA"
@@ -57,9 +54,4 @@ class Importer
     elsif /Goaltender/.match(player_about) then 'Goaltender'
     end
   end
-
-#  def team_creation(name, image)
-#    puts "Importing " + name + " players"
-#    team = Team.create(name: name, image: image)
-#  end
 end
