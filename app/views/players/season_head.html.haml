@@ -1,7 +1,7 @@
 %h4= @header
-= render partial: 'seasonall', locals: {players: @forwards}
+= render partial: 'seasontable', locals: {players: @forwards, role: "Forward"}
 = paginate @forwards, theme: 'twitter-bootstrap-3', param_name: "forward_page"
-= render partial: 'seasonall', locals: {players: @defencemans}
+= render partial: 'seasontable', locals: {players: @defencemans, role: "Defenceman"}
 = paginate @defencemans, theme: 'twitter-bootstrap-3', param_name: "defenceman_page"
-= render partial: 'seasonall', locals: {players: @goalkeepers}
+= render partial: 'seasontable', locals: {players: @goalkeepers, role: "Goalkeeper"}
 = paginate @goalkeepers, theme: 'twitter-bootstrap-3', param_name: "goalkeeper_page"

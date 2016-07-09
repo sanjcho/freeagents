@@ -1,5 +1,4 @@
 class Player < ActiveRecord::Base
-  belongs_to :team
   scope :forward, -> {where(role: "Forward")}
   scope :defenceman, -> {where(role: "Defencemen")}
   scope :goalkeeper, -> {where(role: "Goaltender")}

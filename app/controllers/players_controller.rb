@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
     @defencemans = Player.season1718.defenceman.order(caphit: :desc).page(params[:defenceman_page])
     @goalkeepers = Player.season1718.goalkeeper.order(caphit: :desc).page(params[:goalkeeper_page])
     @header = "Season 2017 - 2018"
-    render "season1718"
+    render "season_head"
   end
 
   def season1819
@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
     @defencemans = Player.season1819.defenceman.order(caphit: :desc).page(params[:defenceman_page])
     @goalkeepers = Player.season1819.goalkeeper.order(caphit: :desc).page(params[:goalkeeper_page])
     @header = "Season 2018 - 2019"
-    render "season1718"
+    render "season_head"
   end
 
   def season1920
@@ -24,6 +24,6 @@ class PlayersController < ApplicationController
     @defencemans = Player.season1920.defenceman.order(caphit: :desc).page(params[:defenceman_page])
     @goalkeepers = Player.season1920.goalkeeper.order(caphit: :desc).page(params[:goalkeeper_page])
     @header = "Season 2019 - 2020"
-    render "season1718"
+    render "season_head"
   end
 end
