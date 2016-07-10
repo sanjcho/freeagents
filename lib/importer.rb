@@ -14,7 +14,7 @@ class Importer
       fork do
         team_name = team_parsed.css('img').first['alt']
         team_logo = team_parsed.css('img').first['src']
-        puts "Importing " + team_name + " players" 
+        puts "Importing  #{team_name} players" 
         parse_players(team_parsed['href'], team_name, team_logo)
       end
     end

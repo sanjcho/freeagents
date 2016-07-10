@@ -26,4 +26,9 @@ class PlayersController < ApplicationController
     @header = "Season 2019 - 2020"
     render "season_head"
   end
+
+  private
+    def player_params
+      params.require(:player).permit(:forward_page, :defenceman_page, :goalkeeper_page)
+    end
 end

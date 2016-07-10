@@ -23,4 +23,25 @@ RSpec.describe Importer do
       expect(Importer.new.get_role("some string without right Goal tender included")).to be_falsy
     end
   end
+
+  context "parsing test team-page" do
+    before do 
+      Importer.new.parse_players("./spec/BostonBruins.html", "BostonBruins", "src of team-logo")
+    end
+    it "number of UFA player is 6" do
+      expect(Player.count).to be 6
+    end
+    it "first player is Marchand, Brad with caphit = 4.5, role = Forward and season = 18" do
+      player = Player.first
+      expect(player.name).to eq "Marchand, Brad"
+      expect(player.caphit).to eq 4.5
+      expect(player.season).to be 18
+    end
+    it "first player is Khudobin, Anton with caphit = 1.2, role = Goalkeeper and season = 19" do
+      player = Player.last
+      expect(player.name).to eq "Khudobin, Anton"
+      expect(player.caphit).to eq 1.2
+      expect(player.season).to be 19
+    end
+  end
 end
