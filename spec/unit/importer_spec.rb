@@ -1,6 +1,5 @@
 require "rails_helper"
 require "importer"
-#require "./lib/importer.rb"
 
 RSpec.describe Importer do
   context "method" do
@@ -24,7 +23,7 @@ RSpec.describe Importer do
     end
   end
 
-  context "parsing test team-page" do
+  context "parsing presaved test page BostonBruins.html" do
     before do 
       Importer.new.parse_players("./spec/BostonBruins.html", "BostonBruins", "src of team-logo")
     end
