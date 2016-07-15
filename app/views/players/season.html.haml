@@ -1,0 +1,8 @@
+%h4= @header
+-#["Forward", "Defenceman", "Goaltender"].each do |role|
+= render partial: 'seasontable', locals: {players: @forwards, role: "Forward"}
+= paginate @forwards, theme: 'twitter-bootstrap-3', param_name: "forward_page"
+= render partial: 'seasontable', locals: {players: @defencemans, role: "Defenceman"}
+= paginate @defencemans, theme: 'twitter-bootstrap-3', param_name: "defenceman_page"
+= render partial: 'seasontable', locals: {players: @goalkeepers, role: "Goalkeeper"}
+= paginate @goalkeepers, theme: 'twitter-bootstrap-3', param_name: "goalkeeper_page"
